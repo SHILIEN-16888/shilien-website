@@ -1,20 +1,20 @@
-# SHILIEN V2 正式版
+# SHILIEN V3
 
-本版已完成：
-- 企業級首頁
-- 醫療院所合作專區
-- 合作對象
-- 合作優勢
-- 五步驟合作流程
-- 企業合作表單
-- LINE / 電話 / Email
-- 手機版響應式
+本版新增：
+- 完整多頁企業官網
+- 首頁滾動顯示動畫
+- 浮動卡片動畫
+- 數字計數動畫
+- 服務頁
+- 醫療院所合作頁
+- 線上預約頁
+- FAQ
+- 隱私權與服務條款
+- SEO sitemap / robots
+- 手機版固定電話、LINE、預約
 
-## 上傳 GitHub
-請把以下內容全部上傳到 repository 根目錄：
-- index.html
-- partner.html
-- assets 資料夾
+## GitHub 更新
+把所有檔案上傳到 Repository 根目錄並覆蓋舊檔。
 
-Commit message 建議：
-SHILIEN V2 homepage and hospital partner page
+建議 Commit：
+SHILIEN V3 full website, booking and partner experience

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shilien.com/sitemap.xml
