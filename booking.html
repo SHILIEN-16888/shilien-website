@@ -1,123 +1,31 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>線上預約｜仕聯 SHILIEN</title>
-  <meta name="description" content="線上填寫仕聯接送需求，送出後由客服確認車輛、服務內容與費用。">
-  <link rel="stylesheet" href="style.css?v=5">
-  <link rel="stylesheet" href="style-v8.css?v=8">
-</head>
-<body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html"><span class="brand-mark">S</span><span class="brand-copy"><b>SHILIEN</b><small>仕聯</small></span></a>
-    <button class="menu" aria-label="開啟選單" aria-expanded="false">☰</button>
-    <nav class="navlinks">
-      <a href="index.html#about">品牌理念</a>
-      <a href="services.html">服務項目</a>
-      <a href="news.html">最新消息</a>
-      <a href="faq.html">FAQ</a>
-      <a data-line href="#">LINE</a>
-      <a class="nav-action nav-booking" href="booking.html">線上預約</a>
-      <a class="nav-action nav-partner" href="partner.html#form">合作洽詢</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Reservation · V8</p>
-      <h1>線上預約接送</h1>
-      <p>先確認完整資料，再安全送至客服 Gmail 與 Google 試算表。</p>
-    </div>
-  </section>
-
-  <section class="section soft">
-    <div class="container form-wrap">
-      <div class="booking-intro">
-        <div>
-          <p class="eyebrow">Before booking</p>
-          <h2>預約前請準備</h2>
-          <p class="copy">日期、時間、上下車地點、車型與輪椅需求。資料送出後，客服確認才算正式成立。</p>
-        </div>
-        <div class="booking-points">
-          <div class="booking-point"><div>①</div><div><strong>填寫資料</strong><span>完整填寫聯絡方式與行程需求。</span></div></div>
-          <div class="booking-point"><div>②</div><div><strong>確認內容</strong><span>送出前會先顯示完整預約摘要。</span></div></div>
-          <div class="booking-point"><div>③</div><div><strong>客服回覆</strong><span>確認車輛、價格與服務內容後正式成立。</span></div></div>
-        </div>
-      </div>
-
-      <form class="form" id="bookingForm" novalidate>
-        <div class="form-row">
-          <label>聯絡人<span class="required-mark">*</span><input required autocomplete="name" name="name"></label>
-          <label>電話<span class="required-mark">*</span><input required autocomplete="tel" inputmode="tel" name="phone" pattern="[0-9+()\-\s]{8,20}"><small class="form-help">請填可聯絡的手機或市話。</small></label>
-        </div>
-
-        <label>客戶 Email<input type="email" autocomplete="email" name="customer_email" placeholder="選填；填寫後可收到預約資料副本"><small class="form-help">未填寫不影響預約送出。</small></label>
-
-        <div class="form-row">
-          <label>服務項目<span class="required-mark">*</span>
-            <select required name="service">
-              <option value="">請選擇</option>
-              <option>醫療接送</option><option>復康巴士／福祉車</option><option>洗腎接送</option><option>出院接送</option><option>醫院陪診</option><option>其他</option>
-            </select>
-          </label>
-          <label>車型<span class="required-mark">*</span>
-            <select required name="vehicle_type">
-              <option value="">請選擇</option>
-              <option>福祉車／復康巴士</option><option>一般轎車</option><option>多人座車</option><option>由客服評估</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="form-row">
-          <label>日期<span class="required-mark">*</span><input required type="date" name="date"></label>
-          <label>時間<span class="required-mark">*</span><input required type="time" name="time"></label>
-        </div>
-
-        <label>上車地址<span class="required-mark">*</span><input required autocomplete="street-address" name="pickup"></label>
-        <label>目的地<span class="required-mark">*</span><input required name="destination"></label>
-
-        <div class="form-row">
-          <label>輪椅
-            <select name="wheelchair"><option>無</option><option>手推輪椅</option><option>電動輪椅</option><option>其他</option></select>
-          </label>
-          <label>是否回程
-            <select name="return_trip"><option>否</option><option>是，待確認</option><option>待確認</option></select>
-          </label>
-        </div>
-
-        <label>備註<textarea rows="5" name="message" placeholder="例如：上下樓、陪同人數、到院後等候等需求"></textarea></label>
-        <label class="check"><input type="checkbox" required name="consent">我同意仕聯為預約、客服聯繫及後續服務目的使用上述資料。</label>
-
-        <div class="form-actions"><button class="btn btn-primary" type="submit">確認預約資料</button></div>
-        <div id="bookingFormStatus" class="form-status" role="status" aria-live="polite" hidden></div>
-      </form>
-    </div>
-  </section>
-</main>
-
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>線上預約｜仕聯 SHILIEN</title><meta name="description" content="線上填寫仕聯醫療接送與福祉車需求。">
+<meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#06101d">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://script.google.com https://script.googleusercontent.com; script-src 'self' 'unsafe-inline' https://script.google.com https://script.googleusercontent.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://script.google.com;">
+<link rel="stylesheet" href="style.css?v=9"></head><body>
+<div class="announcement" id="siteAnnouncement"></div>
+<header class="header"><div class="container nav">
+<a class="brand" href="index.html"><span class="brand-mark">S</span><span class="brand-copy"><b>SHILIEN</b><small>仕聯</small></span></a>
+<button class="menu" aria-label="開啟選單" aria-expanded="false">☰</button>
+<nav class="navlinks">
+<a href="index.html#about">品牌理念</a><a href="services.html">服務項目</a><a href="news.html">最新消息</a><a href="faq.html">FAQ</a><a href="recruitment.html">人才招募</a><a data-line href="#">LINE</a>
+<a class="nav-action nav-booking" href="booking.html">線上預約</a><a class="nav-action nav-partner" href="partner.html#form">合作洽詢</a>
+</nav></div></header><main><section class="page-hero"><div class="container"><p class="eyebrow">Reservation</p><h1>線上預約接送</h1><p>送出資料後，客服將確認車型、行程、服務內容與費用；客服確認前不代表預約成立。</p></div></section>
+<section class="section soft"><div class="container form-wrap"><div><p class="eyebrow">Before booking</p><h2>預約前請準備</h2><p class="copy">日期、時間、上車地點、目的地、車型、輪椅與回程需求。</p><div class="info-card"><div><small>服務電話</small><a data-phone href="#"></a></div><div><small>LINE 官方帳號</small><a data-line href="#">@029kpqds</a></div><div><small>通知信箱</small><a data-email href="#"></a></div></div></div>
+<form class="form" id="bookingForm">
+<div class="honeypot" aria-hidden="true"><label>網站<input name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="form-row"><label>聯絡人姓名<input required name="name" maxlength="50" autocomplete="name" placeholder="例：黃先生／小姐"></label><label>聯絡電話<input required name="phone" maxlength="20" type="tel" autocomplete="tel" placeholder="例：0936-138-281"></label></div>
+<label>電子信箱（選填）<input name="customer_email" maxlength="100" type="email" autocomplete="email" placeholder="可供後續寄送確認資訊"></label>
+<div class="form-row"><label>服務項目<select name="service" required><option>醫療接送</option><option>復康巴士／福祉車</option><option>洗腎接送</option><option>出院接送</option><option>醫院陪診</option><option>其他</option></select></label><label>需求車型<select name="vehicle_type" required><option>福祉車／復康巴士</option><option>七人座車輛</option><option>一般接送車</option><option>由客服評估</option></select></label></div>
+<div class="form-row"><label>上車日期<input required type="date" name="date"></label><label>上車時間<input required type="time" name="time"></label></div>
+<label>上車地址<input required maxlength="160" name="pickup" autocomplete="street-address" placeholder="例：台中市西屯區朝馬七街"></label>
+<label>目的地<input required maxlength="160" name="destination" placeholder="例：中國醫藥大學附設醫院"></label>
+<div class="form-row"><label>輪椅需求<select name="wheelchair"><option>無</option><option>手推輪椅</option><option>電動輪椅</option><option>其他／待客服確認</option></select></label><label>回程需求<select name="return_trip"><option>不需要</option><option>待確認</option><option>需要，時間另行確認</option></select></label></div>
+<label>備註<textarea rows="5" maxlength="1000" name="message" placeholder="陪同人數、上下樓、等候、特殊狀況等"></textarea></label>
+<label class="check"><input type="checkbox" required>我同意仕聯為接送評估、客服聯繫及行程安排目的蒐集與使用上述資料，並了解送出不代表預約成立。</label>
+<button class="btn btn-primary" type="submit">確認預約資料</button><p id="bookingStatus" class="form-status" hidden></p><p class="note">送出前會顯示完整確認視窗，確認後才傳送到仕聯系統。</p>
+</form></div></section></main>
+<div class="modal" id="bookingConfirmModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-modal-close aria-label="關閉">×</button><p class="eyebrow">Confirm reservation</p><h2>請確認預約資料</h2><pre id="bookingConfirmText"></pre><div class="modal-actions"><button class="btn btn-ghost" data-modal-close type="button">返回修改</button><button class="btn btn-primary" id="finalSubmitBooking" type="button">確認送出</button></div></div></div>
+<div class="modal" id="bookingSuccessModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-modal-close aria-label="關閉">×</button><p class="eyebrow">Reservation received</p><h2>預約資料已送出</h2><pre id="bookingSuccessText"></pre><div class="modal-actions"><a class="btn btn-ghost" data-line href="#">加入 LINE 查詢</a><a class="btn btn-primary" href="index.html">返回首頁</a></div></div></div>
 <footer><div class="container footer-grid"><div><b>仕聯 SHILIEN</b><br><span>智慧照護交通整合平台</span></div><div class="footer-links"><a href="privacy.html">隱私權</a><a href="terms.html">服務條款</a><a data-map href="#">Google 地圖</a><a data-line href="#">LINE</a><a data-email href="#"></a><span>© <span data-year></span> SHILIEN</span></div></div></footer>
-<div class="mobile-dock"><a data-phone href="#">電話</a><a data-line href="#">LINE</a><a href="booking.html">立即預約</a></div>
-
-<div class="modal" id="bookingConfirmModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bookingConfirmTitle">
-  <div class="modal-card">
-    <div class="modal-head"><h2 id="bookingConfirmTitle">確認預約資料</h2><button class="modal-close" type="button" data-modal-close aria-label="關閉">×</button></div>
-    <div class="modal-body"><pre class="modal-summary" id="bookingConfirmText"></pre><p class="modal-note">請再次確認日期、時間、電話與地點。按下「確認送出」後，資料會寄至客服 Gmail 並寫入 Google 試算表。</p></div>
-    <div class="modal-actions"><button class="btn btn-secondary" type="button" data-modal-close>返回修改</button><button class="btn btn-primary" id="finalSubmitBooking" type="button">確認送出</button></div>
-  </div>
-</div>
-
-<div class="modal" id="bookingSuccessModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bookingSuccessTitle">
-  <div class="modal-card">
-    <div class="modal-head"><h2 id="bookingSuccessTitle">資料已送出</h2><button class="modal-close" type="button" data-modal-close aria-label="關閉">×</button></div>
-    <div class="modal-body"><div class="modal-success-icon">✓</div><pre class="modal-summary" id="bookingSuccessText"></pre></div>
-    <div class="modal-actions"><button class="btn btn-secondary" id="copyBookingText" type="button">複製預約內容</button><button class="btn btn-primary" type="button" data-modal-close>完成</button></div>
-  </div>
-</div>
-
-<script src="app.js?v=8"></script>
-</body>
-</html>
+<div class="mobile-dock"><a data-phone href="#">電話</a><a data-line href="#">LINE</a><a href="booking.html">立即預約</a></div><script src="app.js?v=9"></script></body></html>
