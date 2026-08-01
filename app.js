@@ -1,5 +1,9 @@
-
-window.SHILIEN={"phone_display": "04-2337-2669", "phone_raw": "0423372669", "email": "admin@shilien.com", "line_url": "https://line.me/R/ti/p/@029kpqds", "map_url": "https://www.google.com/maps/search/?api=1&query=台中市烏日區三榮路一段350號", "address": "台中市烏日區三榮路一段350號", "hours": "08:00–18:00"};
+window.SHILIEN={
+ phone_display:"04-2337-2669",phone_raw:"0423372669",email:"admin@shilien.com",
+ line_url:"https://line.me/R/ti/p/@029kpqds",
+ map_url:"https://www.google.com/maps/search/?api=1&query=台中市烏日區三榮路一段350號",
+ apps_script_url:"https://script.google.com/macros/s/AKfycbyF8U9t1FcEIgtUl9GrrYBKQbsEMOW_1vaclkAT9OkdPqBF4TTsyYumtRWziEErBrODug/exec"
+};
 const c=window.SHILIEN;
 document.querySelectorAll("[data-phone]").forEach(e=>{e.textContent=c.phone_display;e.href="tel:"+c.phone_raw});
 document.querySelectorAll("[data-email]").forEach(e=>{e.textContent=c.email;e.href="mailto:"+c.email});
@@ -7,18 +11,15 @@ document.querySelectorAll("[data-line]").forEach(e=>{e.href=c.line_url;e.target=
 document.querySelectorAll("[data-map]").forEach(e=>{e.href=c.map_url;e.target="_blank";e.rel="noopener"});
 document.querySelectorAll("[data-year]").forEach(e=>e.textContent=new Date().getFullYear());
 const menu=document.querySelector(".menu"),nav=document.querySelector(".navlinks");if(menu)menu.onclick=()=>nav.classList.toggle("open");
-const io=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")}),{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-document.querySelectorAll("[data-count]").forEach(el=>{
- const target=Number(el.dataset.count),obs=new IntersectionObserver(entries=>entries.forEach(entry=>{
-  if(!entry.isIntersecting)return;const t0=performance.now(),dur=1200;
-  const step=t=>{const p=Math.min((t-t0)/dur,1);el.textContent=Math.floor(target*p);if(p<1)requestAnimationFrame(step)};
-  requestAnimationFrame(step);obs.disconnect();
- }),{threshold:.5});obs.observe(el);
-});
-function copyForm(form,title,fields){
- const d=new FormData(form),text=[title,...fields.map(([l,k])=>l+"："+(d.get(k)||"無"))].join("\n");
- navigator.clipboard.writeText(text).then(()=>alert("資料已整理並複製，可直接貼到 LINE 傳送。"));
-}
-const pf=document.querySelector("#partnerForm");if(pf)pf.addEventListener("submit",e=>{e.preventDefault();copyForm(pf,"【SHILIEN 企業合作洽詢】",[["機構名稱","org"],["聯絡人","name"],["職稱","title"],["電話","phone"],["Email","email"],["合作類型","type"],["預估每月接送量","volume"],["希望開始時間","start"],["需求說明","message"]])});
-const bf=document.querySelector("#bookingForm");if(bf)bf.addEventListener("submit",e=>{e.preventDefault();copyForm(bf,"【SHILIEN 接送預約】",[["聯絡人","name"],["電話","phone"],["服務","service"],["日期","date"],["時間","time"],["上車","pickup"],["目的地","destination"],["輪椅","wheelchair"],["回程","return_trip"],["備註","message"]])});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+document.querySelectorAll("[data-count]").forEach(el=>{const target=Number(el.dataset.count),obs=new IntersectionObserver(es=>es.forEach(entry=>{if(!entry.isIntersecting)return;const s=performance.now(),d=1200;const f=n=>{const p=Math.min((n-s)/d,1);el.textContent=Math.floor(target*p);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);obs.disconnect()}),{threshold:.5});obs.observe(el)});
+function val(fd,k,f="無"){const v=String(fd.get(k)||"").trim();return v||f}
+function fmtDate(v){if(!v)return"";const w=["日","一","二","三","四","五","六"],d=new Date(v+"T00:00:00"),a=v.split("-");return `${a[0]}/${a[1]}/${a[2]}（${w[d.getDay()]}）`}
+function payload(form){const d=new FormData(form);return{contact_name:val(d,"name"),phone:val(d,"phone"),customer_email:val(d,"customer_email"),vehicle_type:val(d,"vehicle_type"),service:val(d,"service"),date:val(d,"date"),date_display:fmtDate(val(d,"date","")),time:val(d,"time"),pickup:val(d,"pickup"),destination:val(d,"destination"),wheelchair:val(d,"wheelchair"),return_trip:val(d,"return_trip"),message:val(d,"message"),submitted_at:new Date().toLocaleString("zh-TW",{hour12:false}),source:"SHILIEN 官方網站",status:"待客服確認"}}
+function confirmText(p){return["🚐 SHILIEN 接送預約資料確認",`👤 聯絡人：${p.contact_name}`,`📞 電話：${p.phone}`,`🚐 車型：${p.vehicle_type}`,`📅 日期：${p.date_display}`,`🕕 時間：${p.time}`,`📍 上車：${p.pickup}`,`🏥 目的地：${p.destination}`,`♿ 輪椅：${p.wheelchair}`,`🔄 回程：${p.return_trip}`,`📝 備註：${p.message}`,"","⚠️ 送出資料不代表預約成立。","客服確認車輛、服務內容及費用後，才會正式成立預約。"].join("\n")}
+function successText(p){return["🚐 SHILIEN 接送預約通知",`👤 聯絡人： ${p.contact_name}`,`📞 電話： ${p.phone}`,`🚐 車型： ${p.vehicle_type}`,`📅 日期： ${p.date_display}`,`🕕 時間： ${p.time}`,`📍 上車： ${p.pickup}`,`🏥 目的地： ${p.destination}`,`♿ 輪椅： ${p.wheelchair}`,`🔄 回程： ${p.return_trip}`,`📝 備註： ${p.message}`,"","✅ 預約資料已成功送出，客服確認後才算正式成立。","⬆️ 車輛正式派出後，客服將提供定位或行程資訊。","🚗 車輛出發及抵達通知，將依正式派車系統上線進度提供。","⚠️ 請於預約時間前至上車地點等候；逾時或取消費用依客服確認之正式規則為準。","📍 尖峰時段請依客服或定位資訊至車輛停靠處搭乘，以免影響行程。","🔒 為保障您的權益，如司機私下邀請加入個人通訊軟體或私下接案，請向客服反映。","","感謝您選擇 SHILIEN 仕聯長照服務股份有限公司","安全｜準時｜尊榮｜有溫度"].join("\n")}
+function openM(m){m.classList.add("open");m.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
+function closeM(m){m.classList.remove("open");m.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+const form=document.querySelector("#bookingForm"),cm=document.querySelector("#bookingConfirmModal"),sm=document.querySelector("#bookingSuccessModal"),ct=document.querySelector("#bookingConfirmText"),st=document.querySelector("#bookingSuccessText"),send=document.querySelector("#finalSubmitBooking");let pending=null;
+if(form&&cm&&sm){form.addEventListener("submit",e=>{e.preventDefault();pending=payload(form);ct.textContent=confirmText(pending);openM(cm)});document.querySelectorAll("[data-modal-close]").forEach(b=>b.onclick=()=>closeM(b.closest(".modal")));[cm,sm].forEach(m=>m.onclick=e=>{if(e.target===m)closeM(m)});send.onclick=async()=>{if(!pending)return;if(!c.apps_script_url||c.apps_script_url.includes("PASTE_YOUR")){alert("尚未設定 Google Apps Script 網址。請先依 SETUP_GOOGLE_APPS_SCRIPT.md 完成設定。");return}send.disabled=true;send.textContent="送出中…";try{await fetch(c.apps_script_url,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(pending)});closeM(cm);st.textContent=successText(pending);openM(sm);form.reset();pending=null}catch(err){console.error(err);alert("目前無法送出，請改用 LINE 或電話聯絡客服。") }finally{send.disabled=false;send.textContent="確認送出"}}}
+const pf=document.querySelector("#partnerForm");if(pf)pf.addEventListener("submit",async e=>{e.preventDefault();const d=new FormData(pf),t=["【SHILIEN 企業合作洽詢】",`機構名稱：${val(d,"org")}`,`聯絡人：${val(d,"name")}`,`職稱：${val(d,"title")}`,`電話：${val(d,"phone")}`,`Email：${val(d,"email")}`,`合作類型：${val(d,"type")}`,`預估每月接送量：${val(d,"volume")}`,`希望開始時間：${val(d,"start")}`,`需求說明：${val(d,"message")}`].join("\n");await navigator.clipboard.writeText(t);alert("合作資料已整理並複製，可直接貼到 LINE 傳送。")});
