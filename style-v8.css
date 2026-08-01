@@ -1,0 +1,51 @@
+/* SHILIEN V8 enhancements */
+.navlinks{gap:14px}
+.navlinks .nav-action{padding:10px 16px;border-radius:999px;font-weight:900;white-space:nowrap;transition:.25s ease}
+.navlinks .nav-booking{color:#171108!important;background:linear-gradient(135deg,var(--gold2),var(--gold));border:1px solid transparent;box-shadow:0 10px 28px rgba(201,165,100,.18)}
+.navlinks .nav-booking:hover{color:#171108!important;transform:translateY(-1px)}
+.navlinks .nav-partner{color:var(--gold2)!important;background:rgba(255,255,255,.03);border:1px solid var(--gold)}
+.navlinks .nav-partner:hover{background:rgba(201,165,100,.12)}
+
+.booking-intro{display:grid;gap:18px;align-content:start}
+.booking-points{display:grid;gap:12px;margin-top:20px}
+.booking-point{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.7)}
+.booking-point strong{display:block}
+.booking-point span{display:block;color:var(--muted);font-size:.86rem}
+.form-help{display:block;color:var(--muted);font-size:.76rem;font-weight:400;margin-top:-2px}
+.required-mark{color:#b64040;margin-left:3px}
+.form-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+.form-actions .btn{min-width:190px}
+.form-status{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:.9rem;font-weight:700;border:1px solid transparent}
+.form-status.success{color:#175d39;background:#e9f8f0;border-color:#bde9d0}
+.form-status.error{color:#8e2424;background:#fff0f0;border-color:#f1c3c3}
+.form-status.warning{color:#76550d;background:#fff7df;border-color:#efd992}
+input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:#d44;box-shadow:0 0 0 3px rgba(212,68,68,.1)}
+
+.modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(3,10,18,.76);backdrop-filter:blur(10px)}
+.modal.open{display:flex}
+.modal-card{width:min(720px,100%);max-height:min(86vh,820px);overflow:auto;background:#fff;border-radius:24px;border:1px solid rgba(255,255,255,.35);box-shadow:0 35px 100px rgba(0,0,0,.42)}
+.modal-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 24px;background:#fff;border-bottom:1px solid var(--line)}
+.modal-head h2{font-size:1.55rem}
+.modal-close{width:42px;height:42px;border:0;border-radius:50%;background:var(--paper2);color:var(--text);font-size:1.25rem;cursor:pointer}
+.modal-body{padding:24px}
+.modal-summary{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;line-height:1.9;color:#243143;background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:20px}
+.modal-note{margin-top:16px;color:var(--muted);font-size:.86rem}
+.modal-actions{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:12px;padding:18px 24px;background:#fff;border-top:1px solid var(--line)}
+.modal-actions .btn-secondary{background:#fff;color:var(--text);border-color:#cbd4df}
+.modal-success-icon{width:64px;height:64px;display:grid;place-items:center;margin-bottom:18px;border-radius:50%;background:#e7f8ef;color:#1b8050;font-size:1.8rem;font-weight:900}
+
+@media(max-width:1180px){
+  .navlinks{gap:10px;font-size:.82rem}
+  .navlinks .nav-action{padding:9px 12px}
+}
+@media(max-width:980px){
+  .navlinks .nav-action{display:flex;justify-content:center;width:100%;padding:12px 16px}
+}
+@media(max-width:640px){
+  .modal{padding:10px;align-items:flex-end}
+  .modal-card{max-height:92vh;border-radius:22px 22px 0 0}
+  .modal-head,.modal-body,.modal-actions{padding-left:18px;padding-right:18px}
+  .modal-actions{display:grid;grid-template-columns:1fr}
+  .modal-actions .btn{width:100%}
+  .form-actions{display:grid;grid-template-columns:1fr}
+}
